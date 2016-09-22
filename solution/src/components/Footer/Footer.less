@@ -1,0 +1,18 @@
+@import '../../styles/variables.less';
+@import '../../styles/mixins.less';
+
+.footer {
+  .containerMixin(); 
+}
+
+.footer__inner {
+  .textEmbossMixin();
+  
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  max-width: 250px;
+  padding: 25px 15px;
+  font-size: @font-sm;
+}

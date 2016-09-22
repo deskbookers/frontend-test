@@ -1,0 +1,92 @@
+@import '../../styles/variables.less';
+@import '../../styles/mixins.less';
+
+.carousel {
+  position: relative;
+  display: block;
+  flex-grow: 1;
+  background-color: lighten(@color-secondary, @adjustColor-disabled);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel__inner {
+  z-index: -1;
+}
+
+.carousel__inner__slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: left 1s ease;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.carousel__inner__slide__label {
+  .textShadowMixin();
+  
+  position: relative;
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  padding: 0 50px;
+  transform: translateX(-50%) translateY(-50%);
+  font-size: 9vw;
+  font-weight: 100;
+  color: @color-primary;
+  line-height: 1.47em;
+  text-align: center;
+  
+  @media (min-width: 768px) {
+    font-size: @font-vlg;
+  }
+}
+
+.carousel__pointer() {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 5%;
+  max-width: 64px;
+  min-width: 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% auto;
+  opacity: .5;
+  cursor: pointer;
+  transition: opacity .2s ease;
+  z-index: 1;
+  
+  &:hover {
+    opacity: 1; 
+  }
+}
+
+.carousel__pointer-left {
+  .carousel__pointer();
+  
+  left: 0;
+  background-image: url(../../images/icons/png/left-arrow.png);
+}
+
+.carousel__pointer-right {
+  .carousel__pointer();
+  
+  right: 0;
+  background-image: url(../../images/icons/png/right-arrow.png);
+}
+
+.carousel__search-bar {
+  position: absolute;
+  display: inline-block;
+  bottom: 50px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
