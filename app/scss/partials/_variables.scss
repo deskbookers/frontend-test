@@ -1,0 +1,58 @@
+/* =======================================================================
+Responsive
+========================================================================== */
+$breakpoints: (
+        'xsmall': (max-width: 479px),
+        'small': (max-width: 599px),
+        'medium': (max-width: 767px),
+        'large': (max-width: 1024px),
+        'largeOnly': (min-width: 768px) and (max-width: 1024px),
+        'regular': (max-width: 1199px),
+        'xxl': (min-width: 1200px),
+        'tall': (min-height: 780px),
+);
+
+/* =======================================================================
+Font-face
+========================================================================== */
+
+/* =======================================================================
+Variables
+========================================================================== */
+
+// Fonts stacks
+$font-stack: 'Roboto', sans-serif;
+$font-stack-alt: 'Montserrat Alternates', sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.4;
+
+// Typography
+$color-text: #333;
+$color-link: #ff0000;
+$color-link-visited: lighten($color-link, 20%);
+$color-link-hover: darken($color-link, 20%);
+$color-link-active: darken($color-link, 40%);
+
+// Base
+$page-bg: #f9f9f9;
+$light-bg: #ffffff;
+$result-border: #ddd;
+$dark: #000;
+$light-semi: rgba(255,255,255,0.3);
+$light-semi-dark: rgba(0, 0, 0 ,0.8);
+$light-semi-darker: rgba(255, 255, 255, 0.8);
+$dark-bg: #384378;
+$dark-bg-alt: #172b8a;
+$light: #fff;
+$dark-alt-semi: rgba(102, 183, 70, 0.83);
+$dark-alt: #66b746;
+
+// Highlight
+$color-selection: #ff0000;
+$color-placeholder: #bbb;
+
+// Slider
+$overlay: rgba(36,36,36,0.4);
+
+// Search form
+$overlay: rgba(36,36,36,0.4);

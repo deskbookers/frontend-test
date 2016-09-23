@@ -1,0 +1,43 @@
+/*
+  Project: Deskbookers front-end challenge
+  Author: Alejandra Villa
+  Author URI: 
+  Version: 1.0.0
+  Date: Sept 2016
+*/
+
+/*
+----------------------
+>>> TABLE OF CONTENTS:
+----------------------
+1.0 Fonts
+2.0 Partials
+----------------------
+*/
+
+
+/* Fonts */
+
+@import 'https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700';
+@import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700';
+@import 'https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700';
+
+/* Partials */
+
+// Normalize.css
+@import "partials/normalize";
+
+// Variables
+@import "partials/variables";
+
+// Base defaults
+@import "partials/base";
+
+// Slider styles
+@import "partials/slider";
+
+// Layout defaults
+@import "partials/layout";
+
+// Styles for search results
+@import "partials/results";
