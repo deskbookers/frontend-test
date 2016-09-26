@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HeaderContainer from './HeaderContainer'
 import SliderContainer from './SliderContainer'
+import SearchContainer from './SearchContainer'
 
 export default class Root extends Component {
     render() {
@@ -8,6 +9,7 @@ export default class Root extends Component {
             <div className='root'>
                 <HeaderContainer />
                 <SliderContainer />
+                <SearchContainer />
             </div>
         );
     }

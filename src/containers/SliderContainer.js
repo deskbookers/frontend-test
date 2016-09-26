@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import changeSlide from '../actions/changeSlide';
+import { changeSlide } from '../actions/slider';
 import Slider from '../components/Slider/Slider';
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
     return {
         index: state.slider.index,
         items: state.slider.items,

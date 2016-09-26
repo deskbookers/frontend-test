@@ -33,7 +33,6 @@ const render = (App) => {
     );
 }
 
-
 if (module.hot) {
     module.hot.accept('./containers/Root', () => {
         ReactDOM.unmountComponentAtNode(rootEl);

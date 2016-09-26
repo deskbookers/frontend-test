@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 
 const glyphs = {
@@ -59,5 +59,11 @@ const Slider = ({
     </div>;
 };
 
+
+Slider.propTypes = {
+    index: PropTypes.number,
+    items: PropTypes.array,
+    onSlideChange: PropTypes.func.isRequired,
+};
 
 export default Slider;
