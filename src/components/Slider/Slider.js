@@ -1,6 +1,11 @@
 import React from 'react';
 import cx from 'classnames';
 
+const glyphs = {
+    left: require('../../svg/arrow-left.svg'),
+    right: require('../../svg/arrow-right.svg'),
+};
+
 const Slider = ({
     index = 0,
     items = [],
@@ -25,21 +30,31 @@ const Slider = ({
 
     return <div className='slider'>
 
-        <div className='slider__items'>
-            {items.map((slide, i) => {
-                return <div
-                    key={i}
-                    className={cx({
-                        'slider__item': true,
-                        '_active': index === i,
-                    })}
-                    style={{ backgroundImage: `url(${slide.src})` }}
-                ></div>
-            })}
-        </div>
+        <div className='slider__skin'>
+            <div className='slider__items' style={{ transform: `translateX(-${index * 100}%)` }}>
+                {items.map((slide, i) => {
+                    return <div
+                        key={i}
+                        className={cx({
+                            'slider__item': true,
+                            '_active': index === i,
+                        })}
+                    >
+                        <div
+                            className='slider__item-background'
+                            style={{ backgroundImage: `url(${slide.src})` }}
+                        ></div>
+                    </div>
+                })}
+            </div>
 
-        <button className='slider__prev' onClick={() => changeSlide(-1)}>prev</button>
-        <button className='slider__next' onClick={() => changeSlide(1)}>next</button>
+            <button className='slider__prev' onClick={() => changeSlide(-1)}>
+                <svg><use xlinkHref={glyphs.left}/></svg>
+            </button>
+            <button className='slider__next' onClick={() => changeSlide(1)}>
+                <svg><use xlinkHref={glyphs.right}/></svg>
+            </button>
+        </div>
 
     </div>;
 };

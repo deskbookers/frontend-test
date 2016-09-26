@@ -13,9 +13,9 @@ module.exports = {
         './src/index',
     ],
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, 'build'),
         filename: 'bundle.js',
-        publicPath: '/static/',
+        publicPath: '/static',
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
@@ -28,6 +28,15 @@ module.exports = {
         }, {
             test: /\.sass$/,
             loaders: ['style', 'css?sourceMap', 'postcss?sourceMap', 'sass?sourceMap'],
+        }, {
+            test: /\.(jpe?g|png)$/,
+            loader: 'url',
+        }, {
+            test: /\.svg$/,
+            loader: 'svg-sprite?' + JSON.stringify({
+                name: '[name]',
+                prefixize: true,
+            }),
         }],
     },
     postcss() {

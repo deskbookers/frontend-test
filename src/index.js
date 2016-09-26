@@ -2,16 +2,19 @@ import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import Root from './containers/Root';
 import reducers from './reducers';
 import './styles/styles.sass';
 
+// MOCK
 const preloadedState = {
     slider: {
         items: [
-            { src: '/images/1.jpg' },
-            { src: '/images/2.jpg' },
-            { src: '/images/3.jpg' },
+            { src: '/static/images/image-1.jpg' },
+            { src: '/static/images/image-2.jpg' },
+            { src: '/static/images/image-3.jpg' },
+            { src: '/static/images/image-4.jpg' },
         ],
     },
 };
@@ -22,7 +25,9 @@ const rootEl = document.getElementById('root');
 const render = (App) => {
     ReactDOM.render(
         <AppContainer>
-            <App store={store} />
+            <Provider store={store}>
+                <App />
+            </Provider>
         </AppContainer>,
         rootEl
     );
@@ -31,7 +36,7 @@ const render = (App) => {
 
 if (module.hot) {
     module.hot.accept('./containers/Root', () => {
-        // ReactDOM.unmountComponentAtNode(rootEl);
+        ReactDOM.unmountComponentAtNode(rootEl);
         setImmediate(() => {
             render(require('./containers/Root').default);
         });

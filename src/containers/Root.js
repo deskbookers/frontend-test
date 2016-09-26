@@ -1,19 +1,14 @@
-import React, { Component, PropTypes} from 'react';
-import { Provider } from 'react-redux'
+import React, { Component } from 'react';
+import HeaderContainer from './HeaderContainer'
 import SliderContainer from './SliderContainer'
 
 export default class Root extends Component {
-
-    static propTypes = {
-        store: PropTypes.object.isRequired,
-    }
-
     render() {
-        const { store } = this.props;
         return (
-            <Provider store={store}>
+            <div className='root'>
+                <HeaderContainer />
                 <SliderContainer />
-            </Provider>
+            </div>
         );
     }
 }
