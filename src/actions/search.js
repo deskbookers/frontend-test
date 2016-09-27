@@ -31,7 +31,7 @@ export const receivePlaces = (query, places) => ({
     places,
 });
 
-const fetchPlaces = query => dispatch => {
+export const fetchPlaces = query => dispatch => {
     dispatch(requestPlaces(query));
 
     const queryString = qs.stringify(Object.assign(defaultFilterParams, {
@@ -40,25 +40,7 @@ const fetchPlaces = query => dispatch => {
 
     return fetch(`https://www.deskbookers.com/nl-nl/sajax.json?${queryString}`)
         .then(response => response.json())
-        .then(json => dispatch(receivePlaces(query, json)));
-};
-
-const shouldFetchPlaces = ({ search }, query) => {
-    const places = search.placesByQuery[query];
-
-    if (!places) {
-      return true;
-    }
-
-    if (places.isFetching) {
-       return false;
-    }
-
-    return true;
-};
-
-export const fetchPlacesIfNeeded = query => (dispatch, getState) => {
-    if (shouldFetchPlaces(getState(), query)) {
-      return dispatch(fetchPlaces(query))
-    }
+        .then(places => {
+            dispatch(receivePlaces(query, places))
+        });
 };

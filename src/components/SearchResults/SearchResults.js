@@ -3,8 +3,9 @@ import cx from 'classnames';
 
 const SearchResult = ({ item }) => {
     return <a href={item.location_slug} className='search-result'>
-        <div className='search-result__image'>
-            <img src={item.image_urls2[0]} />
+        <div className='search-result__image' style={{
+            backgroundImage: `url(${item.image_urls2[0]})`
+        }}>
         </div>
         <div className='search-result__name'>{item.name}</div>
         <div className='search-result__location'>

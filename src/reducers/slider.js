@@ -2,7 +2,7 @@ const initialState = {
     index: 0,
 };
 
-const carousel = (state = initialState, action) => {
+const slider = (state = initialState, action) => {
     switch (action.type) {
         case 'CHANGE_SLIDE':
             return Object.assign({}, state, {
@@ -13,4 +13,4 @@ const carousel = (state = initialState, action) => {
     };
 };
 
-export default carousel;
+export default slider;
