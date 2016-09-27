@@ -1,25 +1,34 @@
 import React from 'react';
 import cx from 'classnames';
 
+const ratingShort = (rating) => {
+    return rating.toFixed(2);
+}
+
 const SearchResult = ({ item }) => {
-    return <a href={item.location_slug} className='search-result'>
+    return <a target='_blank' href={item.location_slug} className='search-result'>
         <div className='search-result__image' style={{
             backgroundImage: `url(${item.image_urls2[0]})`
-        }}>
-        </div>
-        <div className='search-result__name'>{item.name}</div>
-        <div className='search-result__location'>
-            <span className='search-result__location-name'>{item.location_name}</span>
-            <span> · </span>
-            <span className='search-result__location-city'>{item.location_city}</span>
-        </div>
+        }}></div>
 
-        {item.review_count && <div className='search-result__rating'>
-            {item.rating} ({item.review_count})
-        </div>}
+        <div className='search-result__description'>
+            <div className='search-result__figures'>
+                {item.review_count > 0 && <div className='search-result__rating'>
+                    <span>{ratingShort(item.rating)} </span>
+                    <small>/ {item.review_count}</small>
+                </div>}
+                {item.review_count > 0 && <br/>}
+                <div className='search-result__price'>
+                    {item.hour_price}€/hr
+                </div>
 
-        <div className='search-result__price'>
-            {item.hour_price}€/hr
+            </div>
+            <h3 className='search-result__name'>{item.name}</h3>
+            <div className='search-result__location'>
+                <span className='search-result__location-name'>{item.location_name}</span>
+                <span> · </span>
+                <span className='search-result__location-city'>{item.location_city}</span>
+            </div>
         </div>
     </a>;
 };

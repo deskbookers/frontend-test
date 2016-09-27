@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { changeQuery, fetchPlaces } from '../actions/search';
 import SearchForm from '../components/SearchForm/SearchForm';
-// import SearchMap from '../components/SearchMap/SearchMap';
+import SearchMap from '../components/SearchMap/SearchMap';
 import SearchResults from '../components/SearchResults/SearchResults';
 
 class SearchContainer extends Component {
@@ -21,10 +21,13 @@ class SearchContainer extends Component {
     render() {
         const { query, places, isFetching, onChangeInput, onSubmitForm } = this.props;
 
-        const { rows } = places;
+        const { rows, bounds } = places;
 
         return (
             <div>
+
+                <SearchMap places={places} />
+
                 <SearchForm
                     value={query}
                     isFetching={isFetching}
@@ -36,11 +39,15 @@ class SearchContainer extends Component {
                     <div className='search-form'>Nothing found</div>
                 }
 
+
+
                 {rows && rows.length > 0 &&
                     <div style={{ opacity: isFetching ? 0.5 : 1 }}>
                         <SearchResults places={places} />
                     </div>
                 }
+
+
 
             </div>
         )

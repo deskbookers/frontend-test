@@ -25,9 +25,7 @@ const search = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 places: action.places,
-            }
-            console.log(a);
-            return a;
+            };
         default:
             return state;
     }
