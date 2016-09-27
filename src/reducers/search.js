@@ -12,20 +12,18 @@ const query = (state = '', action) => {
 
 const places = (state = {
     isFetching: false,
-    items: [],
+    places: {},
 }, action) => {
     switch (action.type) {
         case REQUEST_PLACES:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 isFetching: true,
-            };
+            });
         case RECEIVE_PLACES:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 isFetching: false,
-                items: action.places,
-            };
+                places: action.places,
+            });
         default:
             return state;
     }
@@ -35,10 +33,9 @@ const placesByQuery = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_PLACES:
         case REQUEST_PLACES:
-            return {
-                ...state,
+            return Object.assign({}, state, {
                 [action.query]: places(state[action.query], action),
-            };
+            });
         default:
             return state;
     }

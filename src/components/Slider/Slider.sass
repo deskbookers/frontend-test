@@ -4,6 +4,7 @@
     position: relative
     overflow: hidden
 
+    // Slider goes after the Header ?
     .header + &
         padding-top: $header-height
         margin-top: -$header-height
@@ -45,10 +46,6 @@
                 transform: translate(-5%, -5%)
                 filter: blur(15px)
 
-
-
-
-
     &__prev,
     &__next
         appearance: none
@@ -84,11 +81,8 @@
     &__prev
         left: 0
 
-
     &__next
         right: 0
-
-
 
     +tablet
         &__prev,

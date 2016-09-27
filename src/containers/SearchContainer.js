@@ -8,7 +8,7 @@ import SearchResults from '../components/SearchResults/SearchResults';
 class SearchContainer extends Component {
     static propTypes = {
         query: PropTypes.string.isRequired,
-        places: PropTypes.array.isRequired,
+        places: PropTypes.object.isRequired,
         isFetching: PropTypes.bool.isRequired,
         dispatch: PropTypes.func.isRequired,
     }
@@ -17,12 +17,20 @@ class SearchContainer extends Component {
         super(props);
     }
 
-    handleChange = nextQuery => {
-        this.props.dispatch(changeQuery(nextQuery));
+    handleChange = query => {
+        const { dispatch } = this.props;
+        dispatch(changeQuery(query));
+    }
+
+    handleSubmit = query => {
+        const { dispatch } = this.props;
+        dispatch(fetchPlacesIfNeeded(query));
     }
 
     render() {
         const { query, places, isFetching } = this.props;
+        const { rows } = places;
+
         return (
             <div>
                 <SearchForm
@@ -31,15 +39,15 @@ class SearchContainer extends Component {
                     onSubmit={this.handleSubmit}
                 />
 
-                {isFetching && places.length === 0 &&
+                {isFetching && !rows &&
                     <h2>Loading...</h2>
                 }
 
-                {!isFetching && places.length === 0 &&
+                {!isFetching && rows && rows.length === 0 &&
                     <h2>Empty.</h2>
                 }
 
-                {places.length > 0 &&
+                {rows && rows.length > 0 &&
                     <div style={{ opacity: isFetching ? 0.5 : 1 }}>
                         <SearchResults places={places} />
                     </div>
@@ -55,12 +63,9 @@ function mapStateToProps(state) {
 
     const { query, placesByQuery } = state.search;
 
-    const {
-        isFetching,
-        items: places,
-    } = placesByQuery[query] || {
-        isFetching: true,
-        items: [],
+    const { isFetching, places } = placesByQuery[query] || {
+        isFetching: false,
+        places: {},
     }
 
     return {

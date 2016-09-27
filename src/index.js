@@ -1,8 +1,11 @@
+import 'babel-polyfill';
 import { AppContainer } from 'react-hot-loader';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunkMiddleware from 'redux-thunk'
+import createLogger from 'redux-logger'
 import Root from './containers/Root';
 import reducers from './reducers';
 import './styles/styles.sass';
@@ -19,7 +22,17 @@ const preloadedState = {
     },
 };
 
-const store = createStore(reducers, preloadedState);
+const middleware = [thunkMiddleware];
+if (process.env.NODE_ENV !== 'production') {
+    middleware.push(createLogger())
+}
+
+const store = createStore(
+    reducers,
+    preloadedState,
+    applyMiddleware(...middleware),
+);
+
 const rootEl = document.getElementById('root');
 
 const render = (App) => {

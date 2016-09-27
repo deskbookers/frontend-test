@@ -6,16 +6,25 @@ const glyphs = {
 };
 
 const SearchForm = ({ value, onChange, onSubmit }) => {
-    console.log(value);
 
-    return <form onSubmit={onSubmit} className='search-form'>
+    const onFormSubmit = (e) => {
+        e.preventDefault();
+        onSubmit(e.target.input.value);
+    };
+
+    const onInputChange = ({ target }) => {
+        onChange(target.value);
+    };
+
+    return <form onSubmit={onFormSubmit} className='search-form'>
         <fieldset className='search-form__fieldset'>
             <input
-                className='search-form__input'
+                name='input'
                 type='text'
+                className='search-form__input'
                 value={value}
-                onChange={onChange}
                 placeholder='Find place to work'
+                onChange={onInputChange}
             />
             <button className='search-from__button'>
                 <svg><use xlinkHref={glyphs.right}/></svg>
