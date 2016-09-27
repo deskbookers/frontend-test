@@ -5,19 +5,25 @@ const glyphs = {
     search: require('../../svg/search.svg'),
 };
 
-const Header = () => {
-    return <form className='search-form'>
+const SearchForm = ({ value, onChange, onSubmit }) => {
+    console.log(value);
+
+    return <form onSubmit={onSubmit} className='search-form'>
         <fieldset className='search-form__fieldset'>
             <input
                 className='search-form__input'
                 type='text'
-                value=""
+                value={value}
+                onChange={onChange}
                 placeholder='Find place to work'
             />
-            <button><svg><use xlinkHref={glyphs.right}/></svg></button>
+            <button className='search-from__button'>
+                <svg><use xlinkHref={glyphs.right}/></svg>
+                <span>Search</span>
+            </button>
         </fieldset>
     </form>;
 };
 
 
-export default Header;
+export default SearchForm;

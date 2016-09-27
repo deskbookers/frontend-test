@@ -25,7 +25,11 @@ class SearchContainer extends Component {
         const { query, places, isFetching } = this.props;
         return (
             <div>
-                <SearchForm value={query} onSubmit={this.handleChange} />
+                <SearchForm
+                    value={query}
+                    onChange={this.handleChange}
+                    onSubmit={this.handleSubmit}
+                />
 
                 {isFetching && places.length === 0 &&
                     <h2>Loading...</h2>
