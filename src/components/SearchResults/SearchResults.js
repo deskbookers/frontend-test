@@ -35,7 +35,10 @@ const SearchResult = ({ item }) => {
 
 const SearchResults = ({ places }) => {
     const { rows } = places;
-    return <div className='search-results'>
+    return <div className={cx({
+        'search-results': true,
+        _visible: rows && rows.length
+    })}>
         {rows.map((row, i) => {
             return <SearchResult key={i} item={row} />;
         })}

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import cx from 'classnames';
 import { changeQuery, fetchPlaces } from '../actions/search';
 import SearchForm from '../components/SearchForm/SearchForm';
 import SearchMap from '../components/SearchMap/SearchMap';
@@ -25,7 +26,6 @@ class SearchContainer extends Component {
 
         return (
             <div>
-
                 <SearchMap places={places} />
 
                 <SearchForm
@@ -39,15 +39,11 @@ class SearchContainer extends Component {
                     <div className='search-form'>Nothing found</div>
                 }
 
-
-
                 {rows && rows.length > 0 &&
                     <div style={{ opacity: isFetching ? 0.5 : 1 }}>
                         <SearchResults places={places} />
                     </div>
                 }
-
-
 
             </div>
         )
