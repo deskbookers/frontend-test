@@ -1,0 +1,19 @@
+=min-width($width)
+    @media only screen and (min-width: $width)
+        @content
+
+=min-height($height)
+    @media only screen and (min-height: $height)
+        @content
+
+=min-screen($width, $height)
+    @media only screen and (min-width: $width) and (min-height: $height)
+        @content
+
+=tablet
+    +min-width(768px)
+        @content
+
+=desktop
+    +min-width(1200px)
+        @content

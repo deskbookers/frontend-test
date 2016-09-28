@@ -1,0 +1,96 @@
+.search-results
+    max-width: 1400px
+    margin: 0 auto
+    text-align: center
+    padding: 20px
+    display: none
+
+    &._visible
+        display: block
+
+    +min-width(640px)
+        padding: 10px
+
+.search-result
+    display: block
+    position: relative
+    width: auto
+    height: 200px
+    vertical-align: top
+    margin: 0 0 20px
+    text-align: left
+    color: #fff
+    text-decoration: none
+    text-shadow: 0 0 1px rgba(#000,.5)
+    overflow: hidden
+
+    &:hover
+        .search-result__image
+            transform: scale(1.2)
+
+    &__image
+        background: #333
+        background-position: center
+        background-repeat: no-repeat
+        background-size: cover
+        position: absolute
+        width: 100%
+        height: 100%
+        transition: all 0.3s ease
+        will-change: transform
+
+        &:after
+            content: ''
+            background: rgba(#000,.3)
+            position: absolute
+            width: 100%
+            height: 100%
+
+
+    &__description
+        position: relative
+        padding: 20px
+        height: 100%
+
+
+    &__name
+        font-size: 1.2em
+        font-weight: normal
+        margin: 0 48px 12px 0
+
+    &__location
+        position: absolute
+        bottom: 20px
+        font-size: 0.9em
+        opacity: 0.8
+        left: 20px
+        right: 20px
+
+    &__figures
+        float: right
+        margin: 0 -20px 0 20px
+        text-align: right
+
+    &__price
+        background: #048
+        padding: 4px 8px
+        opacity: 0.8
+        display: inline-block
+
+    &__rating
+        background: #080
+        padding: 4px 8px
+        opacity: 0.8
+        display: inline-block
+
+
+
+    +min-width(640px)
+        display: inline-block
+        width: 280px
+        margin: 10px
+
+
+    // +min-width(1024px)
+    //     display: inline-block
+    //     width: 30.33%
