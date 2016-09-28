@@ -3,8 +3,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
+const argv = require('yargs').argv;
 
-module.exports = {
+const config = {
     devtool: 'eval',
     entry: [
         'react-hot-loader/patch',
@@ -48,3 +49,14 @@ module.exports = {
         ],
     },
 };
+
+
+if (argv.production) {
+    config.entry = './src/index';
+    config.plugins = [
+        new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+        new webpack.DefinePlugin({ 'process.env': { 'NODE_ENV': '"production"' } }),
+    ];
+}
+
+module.exports = config;
