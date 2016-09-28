@@ -1,0 +1,67 @@
+@import './variables.less';
+
+.containerMixin() {
+  margin: 0 auto;
+  
+  @media (min-width: 480px) {
+    max-width: 450px;
+  }
+  
+  @media (min-width: 768px) {
+    max-width: 760px;
+  }
+  
+  @media (min-width: 1200px) {
+    max-width: 1170px;
+  }
+}
+
+.buttonMixin() {
+  padding: 7px 14px;
+  border: solid 1px @color-primary;
+  border-radius: @border-radius;
+  background-color: @color-primary;
+  cursor: pointer;
+  transition: border-color .1s ease,
+    background-color .1s ease;
+}
+
+.primaryButtonMixin() {
+  .buttonMixin();
+  
+  border-color: @color-secondary;
+  background-color: @color-secondary;
+  color: @color-primary;
+  
+  &:hover {
+    border-color: lighten(@color-secondary, @adjustColor-hover);
+    background-color: lighten(@color-secondary, @adjustColor-hover);
+  }
+}
+
+.secondaryButtonMixin() {
+  .buttonMixin();
+  
+  border-color: @color-secondary;
+  background-color: @color-primary;
+  color: @color-secondary;
+  
+  &:hover {
+    border-color: lighten(@color-secondary, @adjustColor-hover);
+  }
+}
+
+.linkMixin() {
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+.textShadowMixin() {
+  text-shadow: 0px 1px 2px @color-contrast; 
+}
+
+.textEmbossMixin() {
+  text-shadow: 0px 1px 2px @color-primary; 
+}

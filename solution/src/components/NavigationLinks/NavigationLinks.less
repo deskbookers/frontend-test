@@ -1,0 +1,28 @@
+@import '../../styles/variables.less';
+@import '../../styles/mixins.less';
+
+.navigation-links {
+  .linkMixin();
+  
+  position: relative;
+  display: inline-block;
+  margin-left: 55px;
+  font-size: @font-sm;
+  white-space: nowrap;
+  overflow: hidden;
+  
+  .navigation-links__link {
+    .buttonMixin();
+    
+    display: inline-block;
+    margin: 0px 5px;
+  }
+  
+  .navigation-links__link-primary {
+     .primaryButtonMixin();
+  }
+  
+  .navigation-links__link-secondary {
+     .secondaryButtonMixin();
+  }
+}
